@@ -30,35 +30,6 @@ cd nome-do-repositorio
 
 7. Sinta-se à vontade para modificar as atividades ou criar novas. Você pode enviar suas melhorias de volta para este repositório por meio de pull requests.
 
-## Estrutura do Repositório
-
-O repositório está organizado da seguinte maneira:
-
-```
-/
-|-- atividade-1-media-de-valores/
-|   |-- index.html
-|   |-- script.js
-|   |-- style.css
-|-- atividade-2-operacoes-aritmeticas/
-|   |-- index.html
-|   |-- script.js
-|   |-- style.css
-|-- atividade-3-comando-confirm/
-|   |-- index.html
-|   |-- script.js
-|   |-- style.css
-|-- atividade-4-lacos-de-repeticao-for/
-|   |-- index.html
-|   |-- script.js
-|   |-- style.css
-|-- atividade-5-eventos-de-validacao-de-formulario/
-|   |-- index.html
-|   |-- script.js
-|   |-- style.css
-|-- README.md
-```
-
 Cada pasta de atividade contém um arquivo `index.html` que descreve a atividade e inclui links para os arquivos JavaScript e CSS associados. O arquivo `script.js` é onde você implementará a solução da atividade.
 
 ## Contribuição
