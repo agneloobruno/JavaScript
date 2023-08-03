@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventos de Mouse</title>
+    <link rel="stylesheet" href="mouse.css">
 </head>
 <body>
     <h1>Eventos de Mouse</h1>
     <br>
-    
+    <div id="cores" onmouseover="sobre()" onmousedown="paraBaixo()" onmousemove="movendo()" onmouseout="saindo()" onmouseup="parCima()"></div>
+    <br>
+    <br>
+    <h2>Logs de Eventos</h2>
+    <div id="log"></div>
+    <script src="mouse.js"></script>
 </body>
 </html>
