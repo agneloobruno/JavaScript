@@ -1,0 +1,53 @@
+# Importing the necessary libraries
+import tkinter as tk
+from tkinter import messagebox
+
+# Creating the GUI window
+window = tk.Tk()
+window.title("Jogo do 8")
+window.geometry("300x300")
+
+# Creating the game board
+board = [[0, 0, 0],
+         [0, 0, 0],
+         [0, 0, 0]]
+
+# Function to check if the game is solved
+def is_solved(board):
+    solved_board = [[1, 2, 3],
+                    [4, 5, 6],
+                    [7, 8, 0]]
+    return board == solved_board
+
+# Function to move the empty space
+def move_empty_space(row, col):
+    empty_row, empty_col = find_empty_space(board)
+    board[row][col], board[empty_row][empty_col] = board[empty_row][empty_col], board[row][col]
+
+# Function to find the empty space
+def find_empty_space(board):
+    for row in range(3):
+        for col in range(3):
+            if board[row][col] == 0:
+                return row, col
+
+# Function to handle button click
+def button_click(row, col):
+    move_empty_space(row, col)
+    if is_solved(board):
+        messagebox.showinfo("Congratulations", "You solved the game!")
+    else:
+        messagebox.showinfo("Keep going", "The game is not solved yet.")
+
+# Creating the buttons
+buttons = []
+for row in range(3):
+    button_row = []
+    for col in range(3):
+        button = tk.Button(window, text=str(board[row][col]), width=10, height=5, command=lambda row=row, col=col: button_click(row, col))
+        button.grid(row=row, column=col)
+        button_row.append(button)
+    buttons.append(button_row)
+
+# Running the GUI window
+window.mainloop()

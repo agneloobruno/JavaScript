@@ -1,0 +1,69 @@
+# Import the necessary libraries
+import tkinter as tk
+from tkinter import messagebox
+
+# Create a class for the game
+class Game:
+    def __init__(self):
+        self.board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]  # Initialize the board
+        self.moves = 0  # Initialize the number of moves
+
+    def start_game(self):
+        # Create the GUI window
+        self.window = tk.Tk()
+        self.window.title("Jogo do 8")
+        self.window.geometry("300x300")
+
+        # Create the buttons for the game
+        self.buttons = []
+        for i in range(3):
+            row = []
+            for j in range(3):
+                button = tk.Button(self.window, text="", width=10, height=5, command=lambda i=i, j=j: self.move_piece(i, j))
+                button.grid(row=i, column=j)
+                row.append(button)
+            self.buttons.append(row)
+
+        # Start the game loop
+        self.window.mainloop()
+
+    def move_piece(self, i, j):
+        # Check if the clicked button is adjacent to the empty space
+        if (i > 0 and self.board[i-1][j] == 0) or (i < 2 and self.board[i+1][j] == 0) or (j > 0 and self.board[i][j-1] == 0) or (j < 2 and self.board[i][j+1] == 0):
+            # Swap the clicked button with the empty space
+            self.board[i][j], self.board[self.empty_i][self.empty_j] = self.board[self.empty_i][self.empty_j], self.board[i][j]
+            self.empty_i, self.empty_j = i, j  # Update the position of the empty space
+            self.moves += 1  # Increment the number of moves
+
+            # Update the text on the buttons
+            for i in range(3):
+                for j in range(3):
+                    self.buttons[i][j].config(text=str(self.board[i][j]))
+
+            # Check if the game is solved
+            if self.board == [[1, 2, 3], [4, 5, 6], [7, 8, 0]]:
+                messagebox.showinfo("Parabéns!", "Você terminou o jogo em " + str(self.moves) + " movimentos!")
+                self.window.destroy()
+
+    def set_board(self, values):
+        # Set the initial board configuration
+        for i in range(3):
+            for j in range(3):
+                self.board[i][j] = values[i][j]
+                if values[i][j] == 0:
+                    self.empty_i, self.empty_j = i, j
+
+        # Update the text on the buttons
+        for i in range(3):
+            for j in range(3):
+                self.buttons[i][j].config(text=str(self.board[i][j]))
+
+# Create an instance of the game
+game = Game()
+
+# Set the initial board configuration
+values = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
+game.set_board(values)
+
+# Start the game
+game.start_game()

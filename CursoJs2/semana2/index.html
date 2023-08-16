@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de compras</title>
+</head>
+<body>
+    <h1>Lista de Compras</h1>
+    <h2>Atividade proposta para o estudo de laços de repetição</h2>
+    <p id="lHeader"></p>
+    <li id="lCompras"></li>
+    <script>
+        let lista = [];
+        let novoItem = prompt("Digite o nome do item ou - se não quiser adicionar");
+        while(novoItem != "-"){
+            lista.push(novoItem);
+            novoItem = prompt("Digite o nome do item ou - se não quiser adicionar")
+        }
+        if(lista.length == 0){
+            alert("A lista está vazia");
+        } else {
+            document.getElementById("lHeader").innerHTML= "Você deve comprar esses itens";
+            for(let i=0; i<lista.length; i++) {
+                document.getElementById("lCompras").innerHTML = (lista[i]);
+            }
+        }
+    </script>
+</body>
+</html>
